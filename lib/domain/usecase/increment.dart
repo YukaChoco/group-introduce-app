@@ -1,9 +1,9 @@
 import 'package:group_introduce_project/domain/repository/counter.dart';
 
-class IncrementCounter {
+class ChangeStateCounter {
   final CounterRepository repository;
 
-  IncrementCounter(this.repository);
+  ChangeStateCounter(this.repository);
 
   Future<int> increment() {
     return repository.increment();

@@ -20,12 +20,12 @@ class _MyHomePageState extends State<MyHomePage> {
   final counterState = CounterDataSource();
 
   void _incrementCounter() async {
-    await IncrementCounter(CounterRepositoryImpl(counterState)).increment();
+    await ChangeStateCounter(CounterRepositoryImpl(counterState)).increment();
     setState(() {});
   }
 
   void _decrementCounter() async {
-    await IncrementCounter(CounterRepositoryImpl(counterState)).decrement();
+    await ChangeStateCounter(CounterRepositoryImpl(counterState)).decrement();
     setState(() {});
   }
 
