@@ -17,15 +17,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final counter = CounterDataSource();
+  final counterState = CounterDataSource();
 
   void _incrementCounter() async {
-    await IncrementCounter(CounterRepositoryImpl(counter)).increment();
+    await IncrementCounter(CounterRepositoryImpl(counterState)).increment();
     setState(() {});
   }
 
   void _decrementCounter() async {
-    await IncrementCounter(CounterRepositoryImpl(counter)).decrement();
+    await IncrementCounter(CounterRepositoryImpl(counterState)).decrement();
     setState(() {});
   }
 
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'You have pushed the button this many times:',
               ),
               Text(
-                '${counter.counter.value}',
+                '${counterState.counter.value}',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
