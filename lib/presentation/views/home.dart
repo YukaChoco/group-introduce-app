@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:group_introduce_project/data/data_source/local/counter.dart';
 import 'package:group_introduce_project/data/repository/counter_impl.dart';
 import 'package:group_introduce_project/domain/usecase/increment.dart';
+import 'package:group_introduce_project/presentation/widgets/floating_action_button.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'You have pushed the button this many times:',
               ),
               Text(
-                '${counter.value}',
+                '${counter.counter.value}',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
@@ -52,17 +53,15 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
+            FloatinActionButtonWidget(
+                icon: Icons.add,
+                tooltip: "increment",
+                onPressed: _incrementCounter),
             const SizedBox(height: 10), // 2つのボタン間のスペース
-            FloatingActionButton(
-              onPressed: _decrementCounter, // デクリメント用の関数を作成します
-              tooltip: 'Decrement',
-              child: const Icon(Icons.remove), // マイナスのアイコンを表示
-            ),
+            FloatinActionButtonWidget(
+                icon: Icons.remove,
+                tooltip: "decrement",
+                onPressed: _decrementCounter),
           ],
         ));
   }

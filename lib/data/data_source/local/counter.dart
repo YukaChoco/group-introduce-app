@@ -1,13 +1,16 @@
+import 'package:group_introduce_project/domain/model/counter.dart';
+
 class CounterDataSource {
-  int value = 0;
+  Counter counter =  Counter(value: 0);
+  
 
   int increment() {
-    value += 1;
-    return value;
+    counter.value += 1;
+    return counter.value;
   }
 
   int decrement() {
-    value -= 1;
-    return value;
+    counter.value -= 1;
+    return counter.value;
   }
 }
