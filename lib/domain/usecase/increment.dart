@@ -5,7 +5,11 @@ class IncrementCounter {
 
   IncrementCounter(this.repository);
 
-  Future<int> call() {
+  Future<int> increment() {
     return repository.increment();
+  }
+
+  Future<int> decrement() {
+    return repository.decrement();
   }
 }

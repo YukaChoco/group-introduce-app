@@ -19,36 +19,51 @@ class _MyHomePageState extends State<MyHomePage> {
   final counter = CounterDataSource();
 
   void _incrementCounter() async {
-    await IncrementCounter(CounterRepositoryImpl(counter)).call();
+    await IncrementCounter(CounterRepositoryImpl(counter)).increment();
+    setState(() {});
+  }
+
+  void _decrementCounter() async {
+    await IncrementCounter(CounterRepositoryImpl(counter)).decrement();
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '${counter.value}',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
             ),
-            Text(
-              '${counter.value}',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const SizedBox(height: 10), // 2つのボタン間のスペース
+            FloatingActionButton(
+              onPressed: _decrementCounter, // デクリメント用の関数を作成します
+              tooltip: 'Decrement',
+              child: const Icon(Icons.remove), // マイナスのアイコンを表示
             ),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+        ));
   }
 }

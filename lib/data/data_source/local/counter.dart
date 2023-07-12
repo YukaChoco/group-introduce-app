@@ -6,7 +6,8 @@ class CounterDataSource {
     return value;
   }
 
-  int getValue() {
+  int decrement() {
+    value -= 1;
     return value;
   }
 }
