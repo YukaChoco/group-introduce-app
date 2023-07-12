@@ -1,12 +1,12 @@
 class CounterDataSource {
-  int _value = 0;
+  int value = 0;
 
   int increment() {
-    _value += 1;
-    return _value;
+    value += 1;
+    return value;
   }
 
   int getValue() {
-    return _value;
+    return value;
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:group_introduce_project/presentation/views/home.dart';
-import 'package:group_introduce_project/data/data_source/local/counter.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,9 +15,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(
+      home: const MyHomePage(
         title: 'Flutter Demo Home Page',
-        dataSource: CounterDataSource(),
       ),
     );
   }

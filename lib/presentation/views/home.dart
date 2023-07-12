@@ -4,12 +4,10 @@ import 'package:group_introduce_project/data/repository/counter_impl.dart';
 import 'package:group_introduce_project/domain/usecase/increment.dart';
 
 class MyHomePage extends StatefulWidget {
-  final CounterDataSource dataSource;
   final String title;
 
-  MyHomePage({
+  const MyHomePage({
     required this.title,
-    required this.dataSource,
     Key? key,
   }) : super(key: key);
 
@@ -18,10 +16,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final counter = CounterDataSource();
 
   void _incrementCounter() async {
-    _counter = await IncrementCounter(CounterRepositoryImpl(widget.dataSource)).call();
+    await IncrementCounter(CounterRepositoryImpl(counter)).call();
     setState(() {});
   }
 
@@ -40,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              '${counter.value}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
