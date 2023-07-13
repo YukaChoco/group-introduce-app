@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:group_introduce_project/presentation/views/Profile.dart';
+import 'package:group_introduce_project/presentation/views/profile.dart';
 import 'package:group_introduce_project/presentation/views/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

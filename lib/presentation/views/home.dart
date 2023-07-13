@@ -18,10 +18,6 @@ class MyHomePage extends ConsumerWidget {
       counterUseCase.decrement();
     }
 
-    void doubleIncrementCounter() async {
-      counterUseCase.doubleIncrement();
-    }
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,

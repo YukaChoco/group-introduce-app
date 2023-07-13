@@ -1,5 +1,4 @@
 import 'package:group_introduce_project/data/repository/counter_impl.dart';
-import 'package:group_introduce_project/domain/model/counter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Counter UseCase
