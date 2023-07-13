@@ -15,4 +15,9 @@ class CounterRepositoryImpl implements CounterRepository {
   Future<int> decrement() async {
     return dataSource.decrement();
   }
+
+  @override
+  Future<int> doubleIncrement() async {
+    return dataSource.doubleIncrement();
+  }
 }

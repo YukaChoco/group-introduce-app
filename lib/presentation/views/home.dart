@@ -29,6 +29,12 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {});
   }
 
+  void _doubleIncrementCounter() async {
+    await ChangeStateCounter(CounterRepositoryImpl(_counterState))
+        .doubleIncrement();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +68,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icons.remove,
                 tooltip: "decrement",
                 onPressed: _decrementCounter),
+            const SizedBox(height: 10), // 2つのボタン間のスペース
+            FloatinActionButtonWidget(
+                icon: Icons.double_arrow,
+                tooltip: "double increment",
+                onPressed: _doubleIncrementCounter),
           ],
         ));
   }

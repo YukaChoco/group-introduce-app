@@ -12,4 +12,8 @@ class ChangeStateCounter {
   Future<int> decrement() {
     return repository.decrement();
   }
+
+  Future<int> doubleIncrement() {
+    return repository.doubleIncrement();
+  }
 }
