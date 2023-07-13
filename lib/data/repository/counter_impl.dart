@@ -1,23 +1,18 @@
-import 'package:group_introduce_project/data/data_source/local/counter.dart';
-import 'package:group_introduce_project/domain/repository/counter.dart';
+// Counter Repository
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:group_introduce_project/domain/model/counter.dart';
 
-class CounterRepositoryImpl implements CounterRepository {
-  final CounterDataSource dataSource;
+class CounterRepository {
+  final Counter _counter;
 
-  CounterRepositoryImpl(this.dataSource);
+  CounterRepository(this._counter);
 
-  @override
-  Future<int> increment() async {
-    return dataSource.increment();
-  }
-
-  @override
-  Future<int> decrement() async {
-    return dataSource.decrement();
-  }
-
-  @override
-  Future<int> doubleIncrement() async {
-    return dataSource.doubleIncrement();
-  }
+  void increment() => _counter.increment();
+  void decrement() => _counter.decrement();
+  void doubleIncrement() => _counter.doubleIncrement();
 }
+
+final counterRepositoryProvider = Provider<CounterRepository>((ref) {
+  final counter = ref.watch(counterProvider.notifier);
+  return CounterRepository(counter);
+});

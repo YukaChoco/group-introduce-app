@@ -1,46 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:group_introduce_project/data/data_source/local/counter.dart';
-import 'package:group_introduce_project/data/repository/counter_impl.dart';
+import 'package:group_introduce_project/domain/model/counter.dart';
 import 'package:group_introduce_project/domain/usecase/increment.dart';
 import 'package:group_introduce_project/presentation/widgets/floating_action_button.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyHomePage extends StatefulWidget {
-  final String title;
-
-  const MyHomePage({
-    required this.title,
-    Key? key,
-  }) : super(key: key);
-
+class MyHomePage extends ConsumerWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterProvider);
+    final counterUseCase = ref.read(counterUseCaseProvider);
 
-class _MyHomePageState extends State<MyHomePage> {
-  final _counterState = CounterDataSource();
+    void incrementCounter() async {
+      counterUseCase.increment();
+    }
 
-  void _incrementCounter() async {
-    await ChangeStateCounter(CounterRepositoryImpl(_counterState)).increment();
-    setState(() {});
-  }
+    void decrementCounter() async {
+      counterUseCase.decrement();
+    }
 
-  void _decrementCounter() async {
-    await ChangeStateCounter(CounterRepositoryImpl(_counterState)).decrement();
-    setState(() {});
-  }
+    void doubleIncrementCounter() async {
+      counterUseCase.doubleIncrement();
+    }
 
-  void _doubleIncrementCounter() async {
-    await ChangeStateCounter(CounterRepositoryImpl(_counterState))
-        .doubleIncrement();
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
+          title: const Text("a"),
         ),
         body: Center(
           child: Column(
@@ -50,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'You have pushed the button this many times:',
               ),
               Text(
-                '${_counterState.counter.value}',
+                '$counter',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
@@ -62,17 +47,17 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatinActionButtonWidget(
                 icon: Icons.add,
                 tooltip: "increment",
-                onPressed: _incrementCounter),
+                onPressed: incrementCounter),
             const SizedBox(height: 10), // 2つのボタン間のスペース
             FloatinActionButtonWidget(
                 icon: Icons.remove,
                 tooltip: "decrement",
-                onPressed: _decrementCounter),
+                onPressed: decrementCounter),
             const SizedBox(height: 10), // 2つのボタン間のスペース
             FloatinActionButtonWidget(
                 icon: Icons.double_arrow,
                 tooltip: "double increment",
-                onPressed: _doubleIncrementCounter),
+                onPressed: doubleIncrementCounter),
           ],
         ));
   }
