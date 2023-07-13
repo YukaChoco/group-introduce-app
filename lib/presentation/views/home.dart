@@ -57,7 +57,9 @@ class MyHomePage extends ConsumerWidget {
             FloatinActionButtonWidget(
                 icon: Icons.double_arrow,
                 tooltip: "double increment",
-                onPressed: doubleIncrementCounter),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/profile');
+                }),
           ],
         ));
   }
