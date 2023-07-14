@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:group_introduce_project/presentation/views/login.dart';
 import 'package:group_introduce_project/presentation/views/profile.dart';
 import 'package:group_introduce_project/presentation/views/home.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => MyHomePage(), // ルート名 '/' は通常ホームページ（アプリの初期ページ）に対応させます。
         '/profile': (context) => ProfilePage(), // '/second'という名前のルートをSecondPageに対応させます。
+        '/login':(context) => LoginPage(),
       },
     );
   }
