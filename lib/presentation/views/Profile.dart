@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_introduce_project/domain/model/profile.dart';
 import 'package:group_introduce_project/domain/usecase/profile.dart';
+import 'package:group_introduce_project/presentation/widgets/profile_mini_card_list.dart';
 
 class ProfilePage extends ConsumerWidget {
   @override
@@ -41,15 +42,7 @@ class ProfilePage extends ConsumerWidget {
                         Theme.of(context).colorScheme.inversePrimary,
                     title: const Text("メンバーリスト"),
                   ),
-                  body: Center(
-                      child: ListView.builder(
-                          itemCount: profiles.length,
-                          itemBuilder: (context, index) => Card(
-                                  child: ListTile(
-                                title: Text(profiles[index].name),
-                                subtitle: Text('一言 : ${profiles[index].introduction}'),
-                                leading: Image.network(profiles[index].imageURL),
-                              )))));
+                  body: Center(child: ProfileMiniCardList(profiles: profiles)));
             }
           }
         });
