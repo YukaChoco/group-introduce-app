@@ -18,14 +18,10 @@ class MyHomePage extends ConsumerWidget {
       counterUseCase.decrement();
     }
 
-    void doubleIncrementCounter() async {
-      counterUseCase.doubleIncrement();
-    }
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("a"),
+          title: const Text("ホーム"),
         ),
         body: Center(
           child: Column(
@@ -57,7 +53,9 @@ class MyHomePage extends ConsumerWidget {
             FloatinActionButtonWidget(
                 icon: Icons.double_arrow,
                 tooltip: "double increment",
-                onPressed: doubleIncrementCounter),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/profile');
+                }),
           ],
         ));
   }
