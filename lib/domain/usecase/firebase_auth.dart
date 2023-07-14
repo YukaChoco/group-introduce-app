@@ -47,7 +47,7 @@ class SignUpWithEmailAndPasswordUseCase {
         await authRepository.signUpWithEmailAndPassword(email, password, name);
     if (user != null) {
       await _userRepository
-          .addUser(CustomUser(id: user!.uid, name: name, email: email));
+          .addUser(CustomUser(id: user.uid, name: name, email: email));
     }
     return user;
   }
@@ -70,7 +70,8 @@ final signOutUseCaseProvider = Provider<SignOutUseCase>((ref) {
   return SignOutUseCase(authRepository);
 });
 
-final signUpWithEmailAndPasswordUseCaseProvider = Provider<SignUpWithEmailAndPasswordUseCase>((ref) {
+final signUpWithEmailAndPasswordUseCaseProvider =
+    Provider<SignUpWithEmailAndPasswordUseCase>((ref) {
   final authRepository = ref.read(authRepositoryProvider);
   final userRepository = ref.read(userRepositoryProvider);
   return SignUpWithEmailAndPasswordUseCase(authRepository, userRepository);

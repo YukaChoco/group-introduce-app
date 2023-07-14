@@ -5,6 +5,10 @@ import 'package:group_introduce_project/presentation/widgets/sign_in_with_google
 import 'package:group_introduce_project/presentation/widgets/sign_in_with_email_and_password.dart';
 
 class LoginPage extends ConsumerWidget {
+  LoginPage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -13,13 +17,14 @@ class LoginPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Login"),
+        title: Text(title),
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             LoginTextField(labelText: 'Email', controller: emailController),
-            LoginTextField(labelText: 'Password', controller: passwordController),
+            LoginTextField(
+                labelText: 'Password', controller: passwordController),
             const SizedBox(height: 40),
             const SignInWithEmailAndPasswordWidget(),
             const SizedBox(height: 20), //

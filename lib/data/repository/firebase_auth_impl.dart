@@ -21,7 +21,7 @@ class FirebaseAuthRepository implements AuthRepository {
       );
       return userCredential.user;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -41,13 +41,13 @@ class FirebaseAuthRepository implements AuthRepository {
           await _firebaseAuth.signInWithCredential(credential);
       return userCredential.user;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
   @override
   Future<User?> signUpWithEmailAndPassword(
-      String email, String password,String names) async {
+      String email, String password, String names) async {
     try {
       UserCredential userCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
@@ -56,7 +56,7 @@ class FirebaseAuthRepository implements AuthRepository {
       );
       return userCredential.user;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

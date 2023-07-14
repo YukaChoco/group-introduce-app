@@ -5,6 +5,10 @@ import 'package:group_introduce_project/domain/usecase/profile.dart';
 import 'package:group_introduce_project/presentation/widgets/profile_mini_card_list.dart';
 
 class ProfilePage extends ConsumerWidget {
+  const ProfilePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(getProfileProvider).execute("1");
@@ -40,7 +44,7 @@ class ProfilePage extends ConsumerWidget {
                   appBar: AppBar(
                     backgroundColor:
                         Theme.of(context).colorScheme.inversePrimary,
-                    title: const Text("メンバーリスト"),
+                    title: Text(title),
                   ),
                   body: Center(child: ProfileMiniCardList(profiles: profiles)));
             }

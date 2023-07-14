@@ -5,6 +5,10 @@ import 'package:group_introduce_project/presentation/widgets/floating_action_but
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyHomePage extends ConsumerWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counter = ref.watch(counterProvider);
@@ -21,7 +25,7 @@ class MyHomePage extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("ホーム"),
+          title: Text(title),
         ),
         body: Center(
           child: Column(

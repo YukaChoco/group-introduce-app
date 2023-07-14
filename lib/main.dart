@@ -14,12 +14,13 @@ void main() async {
 
   runApp(
     ProviderScope(
-      child: MyApp(),
+      child: MyApp(key: GlobalKey()),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,18 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/', // 初期表示するルートを指定
       routes: {
-        '/': (context) => MyHomePage(), // ルート名 '/' は通常ホームページ（アプリの初期ページ）に対応させます。
-        '/profile': (context) => ProfilePage(), // '/second'という名前のルートをSecondPageに対応させます。
-        '/login':(context) => LoginPage(),
+        '/': (context) => MyHomePage(
+              key: GlobalKey(),
+              title: 'home',
+            ), // ルート名 '/' は通常ホームページ（アプリの初期ページ）に対応させます。
+        '/profile': (context) => ProfilePage(
+              key: GlobalKey(),
+              title: 'profile',
+            ), // '/second'という名前のルートをSecondPageに対応させます。
+        '/login': (context) => LoginPage(
+              key: GlobalKey(),
+              title: 'login',
+            ),
       },
     );
   }
