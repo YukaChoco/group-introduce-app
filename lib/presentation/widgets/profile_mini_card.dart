@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_introduce_project/domain/model/profile.dart';
+import 'package:group_introduce_project/presentation/widgets/firebase_storage_image.dart';
 
 class ProfileMiniCard extends ConsumerWidget {
   const ProfileMiniCard({
@@ -17,7 +18,7 @@ class ProfileMiniCard extends ConsumerWidget {
         child: ListTile(
           title: Text(profile.name),
           subtitle: Text('一言 : ${profile.introduction}'),
-          leading: Image.network(profile.imageURL),
+          leading: FirebaseStorageImage(gsUrl: profile.imageURL),
         ));
   }
 }
