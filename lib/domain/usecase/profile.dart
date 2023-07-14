@@ -8,8 +8,8 @@ class GetProfile {
 
   GetProfile(this._repository);
 
-  Stream<List<Profile>> execute() {
-    return _repository.getAllData();
+  Stream<List<Profile>> execute(orgID) {
+    return _repository.getOrgAllProfile(orgID);
   }
 }
 

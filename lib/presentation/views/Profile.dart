@@ -6,7 +6,7 @@ import 'package:group_introduce_project/domain/usecase/profile.dart';
 class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(getProfileProvider).execute();
+    final profile = ref.watch(getProfileProvider).execute("1");
     return StreamBuilder<List<Profile>>(
         stream: profile,
         builder: (context, snapshot) {
@@ -39,7 +39,7 @@ class ProfilePage extends ConsumerWidget {
                   appBar: AppBar(
                     backgroundColor:
                         Theme.of(context).colorScheme.inversePrimary,
-                    title: const Text("a"),
+                    title: const Text("メンバーリスト"),
                   ),
                   body: Center(
                       child: ListView.builder(
@@ -47,7 +47,7 @@ class ProfilePage extends ConsumerWidget {
                           itemBuilder: (context, index) => Card(
                                   child: ListTile(
                                 title: Text(profiles[index].name),
-                                subtitle: Text(profiles[index].introduction),
+                                subtitle: Text('一言 : ${profiles[index].introduction}'),
                                 leading: Image.network(profiles[index].imageURL),
                               )))));
             }

@@ -9,12 +9,16 @@ class FirestoreProfileRepository implements ProfileRepository {
   FirestoreProfileRepository(this._firestore);
 
   @override
-  Stream<List<Profile>> getAllData() {
-    return _firestore.collection('profile').snapshots().map((snapshot) {
-      // 取得したデータをコンソールに表示する
+  Stream<List<Profile>> getOrgAllProfile(orgID) {
+    return _firestore
+        .collection('profile')
+        .where('orgID', isEqualTo: orgID) // Add this line
+        .snapshots()
+        .map((snapshot) {
       var profiles = snapshot.docs
           .map((doc) => Profile(
               id: doc.id,
+              orgID: doc['orgID'],
               name: doc['name'],
               introduction: doc['introduction'],
               imageURL: doc['imageURL']))

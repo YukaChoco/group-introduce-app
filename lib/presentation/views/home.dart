@@ -21,7 +21,7 @@ class MyHomePage extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("a"),
+          title: const Text("ホーム"),
         ),
         body: Center(
           child: Column(
