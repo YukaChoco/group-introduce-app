@@ -1,48 +1,31 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:group_introduce_project/domain/usecase/firebase_auth.dart';
+import 'package:group_introduce_project/presentation/widgets/login_text_field.dart';
+import 'package:group_introduce_project/presentation/widgets/sign_in_with_google.dart';
+import 'package:group_introduce_project/presentation/widgets/sign_in_with_email_and_password.dart';
 
 class LoginPage extends ConsumerWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final signInWithEmailAndPassword = ref.read(signInWithEmailAndPasswordUseCaseProvider);
-    final signInWithGoogle = ref.read(signInWithGoogleUseCaseProvider);
-
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          TextField(
-            controller: emailController,
-            decoration: const InputDecoration(labelText: 'Email'),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: const InputDecoration(labelText: 'Password'),
-          ),
-          ElevatedButton(
-            child: const Text('Sign in with email and password'),
-            onPressed: () async {
-              final user = await signInWithEmailAndPassword.execute(
-                emailController.text,
-                passwordController.text,
-              );
-              // Do something with the user...
-            },
-          ),
-          ElevatedButton(
-            child: const Text('Sign in with Google'),
-            onPressed: () async {
-              final user = await signInWithGoogle.execute();
-              // Do something with the user...
-            },
-          ),
-        ],
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text("Login"),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            LoginTextField(labelText: 'Email', controller: emailController),
+            LoginTextField(labelText: 'Password', controller: passwordController),
+            const SizedBox(height: 40),
+            const SignInWithEmailAndPasswordWidget(),
+            const SizedBox(height: 20), //
+            const SignInWithGoogleWidget(),
+          ],
+        ),
       ),
     );
   }

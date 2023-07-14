@@ -9,9 +9,10 @@ class GetProfile {
   GetProfile(this._repository);
 
   Stream<List<Profile>> execute(orgID) {
-    return _repository.getOrgAllProfile(orgID);
+    final user = _repository.getOrgAllProfile(orgID);
+    return user;
   }
 }
 
-
-final getProfileProvider = Provider<GetProfile>((ref) => GetProfile(ref.read(profileRepositoryProvider)));
+final getProfileProvider = Provider<GetProfile>(
+    (ref) => GetProfile(ref.read(profileRepositoryProvider)));
