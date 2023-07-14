@@ -25,7 +25,7 @@ class SignInWithEmailAndPasswordWidget extends ConsumerWidget {
       ),
       child: const Text(
         'Continue',
-        style: TextStyle(color: Colors.black54, fontSize: 20),
+        style: TextStyle(color: Colors.black54),
       ),
     );
   }

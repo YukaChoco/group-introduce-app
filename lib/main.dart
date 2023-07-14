@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:group_introduce_project/presentation/views/login.dart';
-import 'package:group_introduce_project/presentation/views/profile.dart';
-import 'package:group_introduce_project/presentation/views/home.dart';
+import 'package:group_introduce_project/presentation/views/bottom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -30,21 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
-      initialRoute: '/', // 初期表示するルートを指定
-      routes: {
-        '/': (context) => MyHomePage(
-              key: GlobalKey(),
-              title: 'home',
-            ), // ルート名 '/' は通常ホームページ（アプリの初期ページ）に対応させます。
-        '/profile': (context) => ProfilePage(
-              key: GlobalKey(),
-              title: 'profile',
-            ), // '/second'という名前のルートをSecondPageに対応させます。
-        '/login': (context) => LoginPage(
-              key: GlobalKey(),
-              title: 'login',
-            ),
-      },
+      home: const BottomNavigationBarPage(),
     );
   }
 }

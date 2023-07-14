@@ -17,7 +17,7 @@ class SignInWithGoogleWidget extends ConsumerWidget {
           padding: const EdgeInsets.all(20), fixedSize: const Size(400, 60)),
       child: const Text(
         'Sign in with Google',
-        style: TextStyle(color: Colors.black54, fontSize: 20),
+        style: TextStyle(color: Colors.black54),
       ),
     );
   }
