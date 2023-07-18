@@ -12,7 +12,8 @@ class DownloadImageUsecase {
   }
 }
 
-final downloadImageUsecaseProvider = FutureProvider.family<String, String>((ref, gsUrl) {
+final downloadImageUsecaseProvider =
+    FutureProvider.family<String, String>((ref, gsUrl) {
   final repository = ref.read(storageRepositoryProvider);
   return DownloadImageUsecase(repository).call(gsUrl);
 });

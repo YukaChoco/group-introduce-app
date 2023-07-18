@@ -9,7 +9,7 @@ class FirebaseStorageRepositoy implements StorageRepository {
   Future<String> downloadImage(String gsUrl) async {
     try {
       String filePath = gsUrl;
-      String downloadUrl = await storage.ref(filePath).getDownloadURL();
+      String downloadUrl = await storage.refFromURL(filePath).getDownloadURL();
       return downloadUrl;
     } catch (e) {
       print('Download image failed with error $e');
