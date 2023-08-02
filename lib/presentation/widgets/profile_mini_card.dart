@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:group_introduce_project/domain/model/profile.dart';
+import 'package:group_introduce_project/presentation/views/profile_main.dart';
 import 'package:group_introduce_project/presentation/widgets/firebase_storage_image.dart';
-
 class ProfileMiniCard extends ConsumerWidget {
   const ProfileMiniCard({
     Key? key,
@@ -13,12 +13,23 @@ class ProfileMiniCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Card(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProfileMain(profileID: profile.id),
+          ),
+        );
+      },
+      child: Card(
         margin: const EdgeInsets.only(left: 30, right: 30, top: 10),
         child: ListTile(
           title: Text(profile.name),
           subtitle: Text('一言 : ${profile.introduction}'),
           leading: FirebaseStorageImage(gsUrl: profile.imageURL),
-        ));
+        ),
+      ),
+    );
   }
 }
