@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:group_introduce_project/presentation/views/profile.dart';
-import 'package:group_introduce_project/presentation/views/home.dart';
+import 'package:group_introduce_project/presentation/views/bottom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -13,12 +12,13 @@ void main() async {
 
   runApp(
     ProviderScope(
-      child: MyApp(),
+      child: MyApp(key: GlobalKey()),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
-      initialRoute: '/', // 初期表示するルートを指定
-      routes: {
-        '/': (context) => MyHomePage(), // ルート名 '/' は通常ホームページ（アプリの初期ページ）に対応させます。
-        '/profile': (context) => ProfilePage(), // '/second'という名前のルートをSecondPageに対応させます。
-      },
+      home: const BottomNavigationBarPage(),
     );
   }
 }

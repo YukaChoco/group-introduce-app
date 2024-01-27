@@ -9,6 +9,23 @@ class FirestoreProfileRepository implements ProfileRepository {
   FirestoreProfileRepository(this._firestore);
 
   @override
+  Stream<Profile> getProfileById(orgID, profileID) {
+    return _firestore
+        .collection('profile')
+        .doc(profileID)
+        .snapshots()
+        .map((snapshot) {
+      var profile = Profile(
+          id: snapshot.id,
+          orgID: snapshot['orgID'],
+          name: snapshot['name'],
+          introduction: snapshot['introduction'],
+          imageURL: snapshot['imageURL']);
+      return profile;
+    });
+  }
+
+  @override
   Stream<List<Profile>> getOrgAllProfile(orgID) {
     return _firestore
         .collection('profile')
